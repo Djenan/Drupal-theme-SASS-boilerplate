@@ -1,0 +1,33 @@
+        
+        $converted: svg_convert($width, $svgPath, $png1x, $png2x, $dir1x, $dir2x);
+
+        @if $converted == 1 {
+            /*
+            * If we converted, the sprite isn't part of the sprite map as it's just been added.
+            */
+            @if $dimensions == true {
+                width: image-width("#{$dir1x}/#{$png1x}.png");
+                height: image-height("#{$dir1x}/#{$png1x}.png");
+                display:block;
+            }
+            background-image: inline-image($svgPath), none;
+            background-position:#{$offsetx}px #{$offsety}px;
+            background-size:100% 100%;
+        /* 
+        * We didn't have to convert so we can sprite it.
+        */ 
+        } @else {
+
+            @include svg-use-sprite("#{$png1x}",$dimensions,$offsetx, $offsety);
+
+            /* 
+            Are we using SVG? If so we output it inline
+            */
+            @if $svg == true {
+                .svg & {
+                    background-image: inline-image($svgPath), none;
+                    background-position:#{$offsetx}px #{$offsety}px;
+                    background-size:100% 100%;
+                }
+            }
+        }

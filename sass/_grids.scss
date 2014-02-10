@@ -1,0 +1,133 @@
+/* =============================================================================
+   Utility
+   ========================================================================== */
+
+.force-omega {
+    clear: none !important;
+    margin-right: 0 !important;
+    float: right !important;
+}
+
+.force-hide { display:none !important; }
+.force-clear { clear:both !important; }
+.remove-omega { float: left !important; }
+
+
+
+/* =============================================================================
+   Main grid
+   ========================================================================== */
+
+
+// Change selector to reflect main content wrapper
+.container {
+    @include set-container-width;
+    @include susy-grid-background;
+
+    @include from-grid-6 {
+        @include set-container-width;
+        @include susy-grid-background;
+    }
+
+    @include from-grid-9 {
+        @include set-container-width;
+        @include susy-grid-background;
+    }
+
+    @include from-grid-12 {
+        @include set-container-width;
+        @include susy-grid-background;
+    }
+
+    @include from-grid-18 {
+        @include set-container-width;
+        @include susy-grid-background;
+    }
+}
+
+
+
+
+/* =============================================================================
+   Grid patterns -- WIP, easier way to set rows of blocks
+   ========================================================================== */
+
+@mixin row-layout($row-count, $cols) {
+
+    // $row-count is the number of items per row
+    // $cols is the number of columns in the used grid layout
+
+    @if $cols == 4 {
+        @include span-columns(4/$row-count, $grid-4-col-count);
+    } @else if $cols == 6 {
+        @include span-columns(6/$row-count, $grid-6-col-count);
+    } @else if $cols == 9 {
+        @include span-columns(9/$row-count, $grid-9-col-count);
+    } @else if $cols == 12 {
+        @include span-columns(12/$row-count, $grid-12-col-count);
+    } @else if $cols == 18 {
+        @include span-columns(18/$row-count, $grid-18-col-count);
+    }
+
+    
+    // Apply omega to last item in each row
+    @include nth-omega(#{$row-count}n);
+
+    @if $support-for-ie8 {
+        @for $r from 1 through 5 {
+            .lt-ie9 &.nth-#{$row-count * $r} {
+                @include omega;
+            }
+        }
+    }
+
+
+    // TODO: NEED TO REWRITE THIS TO PREVENT LOADS OF SELECTORS
+    
+    // Apply clear:both to first item in each row
+    // @for $i from 1 through 20 {
+    //     @if $i % $row-count == 0 {
+    //         &:nth-of-type(#{$i + 1}) {                
+    //             clear:both;
+    //         }
+    //         @if $support-for-ie8 {
+    //             .lt-ie9 &.nth-#{$i + 1} {                
+    //                 clear:both;
+    //             }
+    //         }
+    //     }
+    // }
+}
+
+
+
+
+/* =============================================================================
+   Block Layout
+   ========================================================================== */
+
+
+.block {
+
+    @include from-grid-6 {
+        // 2 per row, for 6 cols
+        @include row-layout(2, 6);
+    }
+
+    @include from-grid-9 {
+        // 3 per row, for 9 cols
+        @include row-layout(3, 9);
+    }
+
+    @include from-grid-12 {
+        // 4 per row, for 12 cols
+        @include row-layout(4, 12);
+    }
+
+    @include from-grid-18 {
+        // 6 per row, for 18 cols
+        @include row-layout(6, 18);
+    }
+}
+
+

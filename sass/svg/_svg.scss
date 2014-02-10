@@ -1,0 +1,88 @@
+@import "compass/typography/text/replacement";
+@import "compass/utilities/sprites/base";
+
+$dir1x: "1x";
+$dir2x: "2x";
+
+
+
+@mixin background-svg($file, $width, $offsetx: 0, $offsety: 0, $dimensions: true, $svg:true, $png:false) {
+
+    $svgPath : "svg/#{$file}.svg";
+    $png1x : "#{$file}_w#{$width}";
+    $png2x : "#{$file}_w#{$width}";
+
+    $converted_png: 0;
+
+    @if $png == false {
+        @if $generate_sprites == true {
+            $converted_png: svg_convert($width, $svgPath, $png1x, $png2x, $dir1x, $dir2x);
+        }
+    } @else {
+        $svg: false;
+    }
+
+    @if $generate_sprites == true {
+
+        @if $converted_png == 1 {
+            
+            @if $dimensions == true {
+               @include svg-use-dimensions($png1x,$png2x);
+            }
+            @include svg-embed($svgPath, $offsetx, $offsety, $file);
+        
+        } @else {
+            @include svg-use-sprite("#{$png1x}",$dimensions,$offsetx, $offsety);
+            
+            @if $svg == true {
+                .svg & {
+                    @include svg-embed($svgPath, $offsetx, $offsety, $file);
+                }
+            }
+        }
+    } @else {
+            @if $dimensions == true {
+                @include svg-use-dimensions($png1x,$png2x);
+            }
+            @if $png == false {
+                @include svg-embed($svgPath, $offsetx, $offsety, $file);
+            } @else {
+                @include svg-use-sprite("#{$png1x}",$dimensions,$offsetx, $offsety);
+            }
+    }
+    @include hide-text();
+}
+
+@mixin svg-embed($svgPath, $offsetx, $offsety, $file) {
+    background-image: inline-image($svgPath), none;
+    background-position:#{$offsetx}px #{$offsety}px;
+    background-size:100% 100%;
+    content:$file;
+}
+
+@mixin svg-use-dimensions($png1x, $png2x) {
+    width: image-width("#{$dir1x}/#{$png1x}.png");
+    height: image-height("#{$dir1x}/#{$png1x}.png");
+    display:block;
+}
+
+@mixin svg-use-sprite($sprite, $dimensions: true, $offsetx: 0, $offsety: 0) {
+    @if $dimensions == true {
+        @include sprite-dimensions($map1x, $sprite);
+        display:block;
+    }
+
+    background-image: sprite-url($map1x);
+    background-position: sprite-position($map1x, $sprite, $offsetx, $offsety);
+    background-repeat: no-repeat;
+
+    @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 3 / 2), (min-device-pixel-ratio: 2) {
+
+        $pos : sprite-position($map2x, $sprite, $offsetx * 2, $offsety * 2);
+        background-image: sprite-url($map2x);
+        background-position: round(nth($pos, 1) / 2) round(nth($pos, 2) / 2);
+        background-size: image-width(sprite-path($map2x)) / 2 image-height(sprite-path($map2x)) / 2;
+
+    }
+
+}

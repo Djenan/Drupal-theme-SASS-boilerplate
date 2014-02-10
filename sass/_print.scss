@@ -1,0 +1,202 @@
+/*  =============================================================================
+	=============================================================================
+
+	PRINT STYLES
+
+	File contents:
+
+	- Hide unnecessary
+	- Increase contrast
+	- Add extra info
+	- Tweak formatting
+
+	==========================================================================
+	========================================================================== */
+
+
+/* =============================================================================
+	 Hide unnecessary
+	 ========================================================================== */
+
+nav {
+	display:none  !important;
+}
+
+
+
+
+/* =============================================================================
+	Increase contrast
+	========================================================================== */
+
+
+* {
+	background: transparent !important;
+	color: $black !important; /* Black prints faster: h5bp.com/s */
+	box-shadow: none !important;
+	text-shadow: none !important;
+	@include transition(all 0 ease !important);
+}
+
+body * {
+	color: $print-colour !important;
+}
+
+
+
+
+/* =============================================================================
+	Add extra info
+	========================================================================== */
+
+a[href]:after {
+
+	.author-social-links &,
+	.full-content-body &,
+	.multi-content-inner & {
+		content: " (" attr(href) ")";
+	}
+}
+
+abbr[title]:after {
+
+	.full-content-body &,
+	.multi-content-inner & {
+		content: " (" attr(title) ")";
+	}
+}
+
+.ir a:after,
+a[href^="javascript:"]:after,
+a[href^="#"]:after {
+
+	.author-social-links &,
+	.full-content-body &,
+	.multi-content-inner & {
+		content: "";
+	}
+}
+
+
+
+/* =============================================================================
+	Tweak formatting
+	========================================================================== */
+
+.main-canvas {
+	-webkit-transform: translate(0, 0) !important;
+	-moz-transform: translate(0, 0) !important;
+	-ms-transform: translate(0, 0) !important;
+	-o-transform: translate(0, 0) !important;
+	transform: translate(0, 0) !important;
+
+	margin-left:2cm !important;
+	margin-right:2cm !important;
+	left:auto !important;
+	right:auto !important;
+
+	.menu-open & {
+		-webkit-transform: translate(0, 0) !important;
+		-moz-transform: translate(0, 0) !important;
+		-ms-transform: translate(0, 0) !important;
+		-o-transform: translate(0, 0) !important;
+		transform: translate(0, 0) !important;
+
+		margin-left:0 !important;
+		margin-right:0 !important;
+		left:auto !important;
+		right:auto !important;
+	}
+}
+
+a,
+a:visited {
+	//border-bottom: none !important;
+	//text-decoration: underline !important;
+
+	.full-content-body &,
+	.multi-content-inner & {
+		border-bottom-color: $print-hightlight-color !important;
+	}
+}
+
+
+
+pre,
+blockquote,
+.footer,
+.asset-embed {
+	//border: 1px solid #999;
+	page-break-inside: avoid;
+}
+
+thead {
+	display: table-header-group; /* h5bp.com/t */
+}
+
+tr,
+img,
+.full-content-detail-list {
+	page-break-inside: avoid;
+}
+
+img {
+	max-width: 100% !important;
+}
+
+@page {
+	margin: 2cm 4cm;
+}
+
+.full-content-body {
+	//margin: 1cm 2cm 2cm;
+}
+
+.full-content-aside {
+	//margin: 1cm 2cm 1cm;
+}
+
+h2,
+h3 {
+	page-break-after: avoid;
+}
+
+
+p,
+h2,
+h3 {
+	orphans: 3;
+	widows: 3;
+}
+
+
+
+/* =============================================================================
+	Tweak formatting: Logo
+	========================================================================== */
+
+.logo {
+	top: 0 !important;
+	right: 0 !important;
+	position: absolute !important;
+
+	background-color: yellow !important;
+	width: 1.5cm !important;
+    height: 1.5cm !important;
+    z-index: 100;
+
+    img {
+        width: 1.5cm !important;
+        height: 1.5cm !important;
+    }
+}
+
+.logo-container {
+	background-color: blue !important;
+	position: relative !important;
+    width: 100% !important;
+
+	.menu-open & {
+        @include translate(0, 0);
+    }
+}

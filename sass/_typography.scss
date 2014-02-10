@@ -1,0 +1,191 @@
+/* =============================================================================
+   Normalise typography -- from normalize.css v1.1.3 | MIT License | git.io/normalize
+
+   Placed here for convenience.
+   ========================================================================== */
+
+
+
+// Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+abbr[title] { border-bottom: 1px dotted; }
+
+// Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+b,
+strong { font-weight: bold; }
+
+blockquote { margin: 1em 40px; }
+
+// Address styling not present in Safari 5 and Chrome.
+dfn { font-style: italic; }
+
+// Address differences between Firefox and other browsers.
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+// Address styling not present in IE 6/7/8/9.
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+// Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+// Improve readability of pre-formatted text in all browsers.
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+
+// Address inconsistent and variable font size in all browsers.
+small { font-size: 80%; }
+
+// Prevent `sub` and `sup` affecting `line-height` in all browsers.
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+
+// Address `outline` inconsistency between Chrome and other browsers.
+a:focus { outline: thin dotted; }
+
+// Improve readability when focused and also mouse hovered in all browsers.
+a:active,
+a:hover {
+    outline: 0;
+}
+
+
+
+/* =============================================================================
+   Standard typography
+   ========================================================================== */
+
+a {
+    @include link-border-underline;
+
+    &[href^="tel:"] {
+        @include from-grid-9() {
+            color: $default-text-color;
+        }
+    }
+}
+
+h1, h2, h3, p, li {
+    @include transition(all $quick-transition);
+    text-rendering: optimizeLegibility;
+    @include fix-font-weight;
+}
+
+
+h1 {
+    $h1-font-size: 28px;
+
+    @include adjust-font-size-to($h1-font-size, 5);
+    @include margin-leader(4, $h1-font-size);
+    @include margin-trailer(4, $h1-font-size);
+}
+
+h2 {
+    $h2-font-size: 24px;
+
+    @include adjust-font-size-to($h2-font-size);
+    @include margin-leader(4, $h2-font-size);
+    @include margin-trailer(4, $h2-font-size);
+}
+
+h3 {
+    $h3-font-size: 20px;
+
+    @include adjust-font-size-to($h3-font-size);
+    @include margin-leader(4, $h3-font-size);
+    @include margin-trailer(4, $h3-font-size);
+}
+
+h4 {
+    $h4-font-size: 20px;
+
+    @include adjust-font-size-to($h4-font-size);
+    @include margin-leader(4, $h4-font-size);
+    @include margin-trailer(4, $h4-font-size);
+}
+
+p {
+    @include adjust-font-size-to($base-font-size);
+    @include margin-leader(4);
+    @include margin-trailer(4);
+}
+
+i,
+em {
+    font-style: italic;
+}
+
+
+
+
+/* =============================================================================
+   Lists
+   ========================================================================== */
+
+%standard-list-spacing {
+    @include clearfix;
+    padding-left: rhythm(4);
+    
+    li {
+        position: relative;
+        float: left;
+        clear: left;
+    }
+}
+
+ul,
+ol {
+    padding-left: rhythm(4);
+    @include margin-leader(4);
+    @include margin-trailer(4);
+}
+
+ul {
+    @extend %standard-list-spacing;
+    list-style-type: none;
+
+    li {
+        &:before {
+            content: "• ";
+            color: $list-bullet-colour;
+            position:absolute;
+            top:-1px;
+            left:-24px;
+            font-size:18px;
+        }
+    }
+}
+
+li {
+    @include adjust-font-size-to(16px, 4);
+    margin: 0 rhythm(2, 16px) 0 0;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}

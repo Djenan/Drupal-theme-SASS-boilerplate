@@ -1,0 +1,106 @@
+
+/*  =============================================================================
+    Misc Mixins
+    ========================================================================== */
+
+
+// Creates an absolutely positioned pseudo block
+@mixin pseudo-block($width: 16px, $height: 16px) {
+    display: block;
+    content: '';
+    position: absolute;
+    
+    width:$width;
+    height:$height;
+
+    @if $width == 100% {
+        margin-left: 0;
+        left:0;
+    } @else {
+        margin-left: -$width / 2;
+        left:50%;
+    }
+
+    @if $height == 100% {
+        margin-top: 0;
+        top:0;
+    } @else {
+        margin-top: -$height / 2;
+        top: 50%;
+    }
+}
+
+
+// uses border instead of text-decoration for link style
+@mixin link-border-underline($defalt-state-color: $link-color, $hover-state-color: $link-hover-color) {
+    color: $defalt-state-color;
+    @include transition(all 0.25s ease);
+ 
+    text-decoration: none;
+    border-bottom: 1px solid lighten($defalt-state-color, 40%);
+ 
+    &:hover,
+    &:focus {
+        color: $hover-state-color;
+        border-bottom-color: $hover-state-color;
+    }
+}
+
+
+
+// Hides an element visually, but makes it still available for screenreaders
+@mixin hide-visually {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+@mixin prevent-webkit-gpu-flash {
+    -webkit-transform: translateZ(0);
+}
+
+
+@mixin fix-font-weight {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/*  =============================================================================
+    Media Queries
+    ========================================================================== */
+
+@mixin only-grid-4 {
+    @include at-breakpoint($only-grid-4) { @content; }
+}
+
+@mixin from-grid-6 {
+    @include at-breakpoint($from-grid-6) { @content; }
+    @if $support-for-ie8 { @content; }
+}
+
+@mixin from-grid-9 {
+    @include at-breakpoint($from-grid-9) { @content; }
+    @if $support-for-ie8 { @content; }
+}
+
+@mixin from-grid-12 {
+    @include at-breakpoint($from-grid-12) { @content; }
+    @if $support-for-ie8 { @content; }
+}
+
+@mixin from-grid-18 { @include at-breakpoint($from-grid-18) { @content; } }
+
+
+@mixin only-retina {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+        @content;
+    }
+}

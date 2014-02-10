@@ -1,0 +1,161 @@
+/*  =============================================================================
+	=============================================================================
+	This file contains all the global CSS variables and settings.
+	This is used for both style.css and style-legacy.css
+
+	File contents:
+
+	01. Imports
+	02. Colours & Sizes
+	03. Transition Settings
+	04. Grids (for Susy)
+	05. Media Queries (for Susy)
+	06. Vertical Rhythm
+	07. Fonts & Font stacks
+	08. Mixins
+	09. Spriting
+
+	==========================================================================
+	========================================================================== */
+
+
+
+
+/*	=============================================================================
+	1. Imports
+	========================================================================== */
+
+@import "compass/css3";
+@import "compass/utilities";
+
+// Cross browser RGBA cupport (uses PNG fallback -- http://aaronrussell.co.uk/legacy/cross-browser-rgba-support/)
+@import "rgbapng";
+
+
+
+
+/*	=============================================================================
+	2. Colours & Sizes
+	========================================================================== */
+
+// utility
+$undecided: cyan;
+
+// site colours
+$background: #f2f2f2;
+$default-text-color: #666;
+$default-border-color: #999;
+$list-bullet-colour: #f00;
+
+$link-color: #00f;
+$link-hover-color: $link-color;
+
+
+// print colours
+$print-colour: #000;
+
+$print-border-color: #aaa;
+$print-hightlight-color: #f00;
+$print-subtle-bg: #eee;
+
+
+
+
+/* 	=============================================================================
+	3. Transition Settings
+	========================================================================== */
+
+$no-transition:     0s    ease;
+$quick-transition:  0.25s ease;
+$basic-transition:  0.5s  ease;
+$slow-transition:   1s    ease;
+
+
+
+
+/* 	=============================================================================
+	4. Grids (for Susy) -- requres Susy: http://susy.oddbird.net/
+	========================================================================== */
+
+@import "susy";
+
+// Default is 4 col
+$total-columns          : 4;
+$column-width           : 45px;
+$gutter-width           : 30px;
+$grid-padding           : $gutter-width;
+
+$container-style        : magic;
+$container-width        : 1380px;
+
+$grid-background-column-color : #e3e8eb;
+
+$grid-4-col-count   : 4;
+$grid-6-col-count   : 6;
+$grid-9-col-count   : 9;
+$grid-12-col-count  : 12;
+$grid-18-col-count  : 18;
+
+
+
+
+/* 	==========================================================================
+	5. Media Queries (for Susy) -- requres Susy: http://susy.oddbird.net/
+	========================================================================== */
+
+$only-grid-4:     $grid-4-col-count 480px;
+
+$from-grid-6:     $grid-6-col-count;
+$from-grid-9:     $grid-9-col-count;
+$from-grid-12:    $grid-12-col-count;
+$from-grid-18:    $grid-18-col-count;
+
+
+
+/* 	==========================================================================
+	6. Vertical Rhythm -- requires Compass http://compass-style.org/
+	========================================================================== */
+
+@import "compass/typography/vertical_rhythm";
+@import "compass/layout/grid-background";
+
+$base-font-size: 16px;
+$base-line-height: 6px;
+
+$extra-large-font-size: 20px;
+
+@include establish-baseline;
+
+
+
+
+/* 	==========================================================================
+	7. Fonts & Font stacks
+	========================================================================== */
+
+$sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$serif: Georgia, Times, "Times New Roman", serif;
+
+
+
+
+/* 	=============================================================================
+	8. Mixins
+	========================================================================== */
+
+// import custom mixins partial here
+@import "numiko-mixins";
+
+
+
+/* 	=============================================================================
+	9. Spriting -- requires Compass http://compass-style.org/
+	========================================================================== */
+
+// $map1x: sprite-map("1x/*.png",$spacing:50px);
+// $map2x: sprite-map("2x/*.png",$spacing:100px);
+
+// $generate_sprites: true;
+
+
+

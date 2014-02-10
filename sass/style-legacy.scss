@@ -1,0 +1,42 @@
+/*  =============================================================================
+    =============================================================================
+    
+    This file will compile into stylesheet for IE8 and below
+
+    ==========================================================================
+    ========================================================================== */
+
+$legacy-support-for-ie: true;
+$legacy-support-for-ie6 : true;
+$legacy-support-for-ie7 : true;
+$legacy-support-for-ie8 : true;
+
+$support-for-ie: true;
+$support-for-ie6 : true;
+$support-for-ie7 : true;
+$support-for-ie8 : true;
+
+$breakpoint-no-queries: false;
+$breakpoint-no-query-fallbacks: true;
+
+@import "base";
+@import "normalise";
+@import "drupal-overrides";
+@import "utility";
+@import "typography";
+@import "grids";
+@import "forms";
+
+@import "main";
+
+// One Partial Per View Mode
+@import "vm-teaser";
+@import "vm-full";
+
+// Styles for jQ Plugins go here
+
+// Temporary Dev Styles
+@import "temporary";
+
+// IE Specific Styles
+@import "ie";
