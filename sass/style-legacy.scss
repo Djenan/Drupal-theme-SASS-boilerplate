@@ -1,23 +1,19 @@
 /*  =============================================================================
     =============================================================================
+
+    LEGACY
+
+    --
     
     This file will compile into stylesheet for IE8 and below
 
     ==========================================================================
     ========================================================================== */
 
+
 $legacy-support-for-ie: true;
-$legacy-support-for-ie6 : true;
-$legacy-support-for-ie7 : true;
 $legacy-support-for-ie8 : true;
-
-$support-for-ie: true;
-$support-for-ie6 : true;
-$support-for-ie7 : true;
-$support-for-ie8 : true;
-
-$breakpoint-no-queries: false;
-$breakpoint-no-query-fallbacks: true;
+$no-media-query-support: true;
 
 @import "base";
 @import "normalise";
@@ -38,5 +34,5 @@ $breakpoint-no-query-fallbacks: true;
 // Temporary Dev Styles
 @import "temporary";
 
-// IE Specific Styles
+// IE8 (and below) Specific Styles
 @import "ie";

@@ -3,20 +3,24 @@
 
 	PRINT STYLES
 
+	--
+
 	File contents:
 
-	- Hide unnecessary
-	- Increase contrast
-	- Add extra info
-	- Tweak formatting
+	01. Hide unnecessary
+	02. Increase contrast
+	03. Add extra info
+	04. Tweak formatting: General
+	05. Tweak formatting: Logo
+	06. 
 
 	==========================================================================
 	========================================================================== */
 
 
-/* =============================================================================
-	 Hide unnecessary
-	 ========================================================================== */
+/*	=============================================================================
+	01. Hide unnecessary
+	========================================================================== */
 
 nav {
 	display:none  !important;
@@ -25,14 +29,14 @@ nav {
 
 
 
-/* =============================================================================
-	Increase contrast
+/*	=============================================================================
+	02. Increase contrast
 	========================================================================== */
 
 
 * {
 	background: transparent !important;
-	color: $black !important; /* Black prints faster: h5bp.com/s */
+	color: $print-colour !important; /* Black prints faster: h5bp.com/s */
 	box-shadow: none !important;
 	text-shadow: none !important;
 	@include transition(all 0 ease !important);
@@ -45,8 +49,8 @@ body * {
 
 
 
-/* =============================================================================
-	Add extra info
+/*	=============================================================================
+	03. Add extra info
 	========================================================================== */
 
 a[href]:after {
@@ -79,8 +83,9 @@ a[href^="#"]:after {
 
 
 
-/* =============================================================================
-	Tweak formatting
+
+/*	=============================================================================
+	04. Tweak formatting: General
 	========================================================================== */
 
 .main-canvas {
@@ -112,7 +117,7 @@ a[href^="#"]:after {
 a,
 a:visited {
 	//border-bottom: none !important;
-	//text-decoration: underline !important;
+	text-decoration: none !important;
 
 	.full-content-body &,
 	.multi-content-inner & {
@@ -126,7 +131,6 @@ pre,
 blockquote,
 .footer,
 .asset-embed {
-	//border: 1px solid #999;
 	page-break-inside: avoid;
 }
 
@@ -148,14 +152,6 @@ img {
 	margin: 2cm 4cm;
 }
 
-.full-content-body {
-	//margin: 1cm 2cm 2cm;
-}
-
-.full-content-aside {
-	//margin: 1cm 2cm 1cm;
-}
-
 h2,
 h3 {
 	page-break-after: avoid;
@@ -164,15 +160,17 @@ h3 {
 
 p,
 h2,
-h3 {
+h3,
+h4 {
 	orphans: 3;
 	widows: 3;
 }
 
 
 
-/* =============================================================================
-	Tweak formatting: Logo
+
+/*	=============================================================================
+	05. Tweak formatting: Logo
 	========================================================================== */
 
 .logo {
@@ -200,3 +198,13 @@ h3 {
         @include translate(0, 0);
     }
 }
+
+
+
+
+/*	=============================================================================
+	06. 
+	========================================================================== */
+
+
+

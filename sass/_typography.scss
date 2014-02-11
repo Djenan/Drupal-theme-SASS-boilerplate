@@ -1,8 +1,33 @@
-/* =============================================================================
-   Normalise typography -- from normalize.css v1.1.3 | MIT License | git.io/normalize
+/*  =============================================================================
+    =============================================================================
 
-   Placed here for convenience.
-   ========================================================================== */
+    TYPOGRPAHY
+
+    --
+
+    This file contains global typographic styles
+    Typography resets have been moved here for convenience
+
+    --
+
+    File contents:
+
+    01. Normalise typography
+    02. Standard typography
+    03. Lists
+    04. 
+
+    ==========================================================================
+    ========================================================================== */
+
+
+
+
+/*  =============================================================================
+    01. Normalise typography -- from normalize.css v1.1.3 | MIT License | git.io/normalize
+
+    Placed here for convenience.
+    ========================================================================== */
 
 
 
@@ -76,9 +101,9 @@ a:hover {
 
 
 
-/* =============================================================================
-   Standard typography
-   ========================================================================== */
+/*  =============================================================================
+    02. Standard typography
+    ========================================================================== */
 
 a {
     @include link-border-underline;
@@ -90,9 +115,13 @@ a {
     }
 }
 
+i,
+em {
+    font-style: italic;
+}
+
 h1, h2, h3, p, li {
     @include transition(all $quick-transition);
-    text-rendering: optimizeLegibility;
     @include fix-font-weight;
 }
 
@@ -135,21 +164,18 @@ p {
     @include margin-trailer(4);
 }
 
-i,
-em {
-    font-style: italic;
-}
 
 
 
-
-/* =============================================================================
-   Lists
-   ========================================================================== */
+/*  =============================================================================
+    03. Lists
+    ========================================================================== */
 
 %standard-list-spacing {
     @include clearfix;
     padding-left: rhythm(4);
+    @include margin-leader(4);
+    @include margin-trailer(4);
     
     li {
         position: relative;
@@ -160,13 +186,10 @@ em {
 
 ul,
 ol {
-    padding-left: rhythm(4);
-    @include margin-leader(4);
-    @include margin-trailer(4);
+    @extend %standard-list-spacing;
 }
 
 ul {
-    @extend %standard-list-spacing;
     list-style-type: none;
 
     li {
@@ -189,3 +212,13 @@ li {
         margin-bottom: 0;
     }
 }
+
+
+
+
+/*  =============================================================================
+    04. 
+    ========================================================================== */
+
+
+

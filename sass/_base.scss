@@ -1,7 +1,14 @@
 /*  =============================================================================
 	=============================================================================
+
+	BASE
+
+	--
+
 	This file contains all the global CSS variables and settings.
 	This is used for both style.css and style-legacy.css
+
+	--
 
 	File contents:
 
@@ -22,24 +29,27 @@
 
 
 /*	=============================================================================
-	1. Imports
+	01. Imports
 	========================================================================== */
 
 @import "compass/css3";
 @import "compass/utilities";
+@import "compass/support";
 
-// Cross browser RGBA cupport (uses PNG fallback -- http://aaronrussell.co.uk/legacy/cross-browser-rgba-support/)
+// Cross browser RGBA cupport -- uses PNG fallback
+// http://aaronrussell.co.uk/legacy/cross-browser-rgba-support/
 @import "rgbapng";
 
 
 
 
 /*	=============================================================================
-	2. Colours & Sizes
+	02. Colours & Sizes
 	========================================================================== */
 
 // utility
 $undecided: cyan;
+
 
 // site colours
 $background: #f2f2f2;
@@ -62,7 +72,7 @@ $print-subtle-bg: #eee;
 
 
 /* 	=============================================================================
-	3. Transition Settings
+	03. Transition Settings
 	========================================================================== */
 
 $no-transition:     0s    ease;
@@ -74,7 +84,7 @@ $slow-transition:   1s    ease;
 
 
 /* 	=============================================================================
-	4. Grids (for Susy) -- requres Susy: http://susy.oddbird.net/
+	04. Grids (for Susy) -- requres Susy: http://susy.oddbird.net/
 	========================================================================== */
 
 @import "susy";
@@ -100,7 +110,7 @@ $grid-18-col-count  : 18;
 
 
 /* 	==========================================================================
-	5. Media Queries (for Susy) -- requres Susy: http://susy.oddbird.net/
+	05. Media Queries (for Susy) -- requres Susy: http://susy.oddbird.net/
 	========================================================================== */
 
 $only-grid-4:     $grid-4-col-count 480px;
@@ -113,7 +123,7 @@ $from-grid-18:    $grid-18-col-count;
 
 
 /* 	==========================================================================
-	6. Vertical Rhythm -- requires Compass http://compass-style.org/
+	06. Vertical Rhythm -- requires Compass http://compass-style.org/
 	========================================================================== */
 
 @import "compass/typography/vertical_rhythm";
@@ -130,7 +140,7 @@ $extra-large-font-size: 20px;
 
 
 /* 	==========================================================================
-	7. Fonts & Font stacks
+	07. Fonts & Font stacks
 	========================================================================== */
 
 $sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -140,7 +150,7 @@ $serif: Georgia, Times, "Times New Roman", serif;
 
 
 /* 	=============================================================================
-	8. Mixins
+	08. Mixins
 	========================================================================== */
 
 // import custom mixins partial here
@@ -149,7 +159,7 @@ $serif: Georgia, Times, "Times New Roman", serif;
 
 
 /* 	=============================================================================
-	9. Spriting -- requires Compass http://compass-style.org/
+	09. Spriting -- requires Compass http://compass-style.org/
 	========================================================================== */
 
 // $map1x: sprite-map("1x/*.png",$spacing:50px);

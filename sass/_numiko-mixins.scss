@@ -1,8 +1,25 @@
-
 /*  =============================================================================
-    Misc Mixins
+    =============================================================================
+
+    MIXINS FOR USE AND REUSE
+
+    --
+
+    File contents:
+
+    01. Misc Mixins
+    02. Media Queries
+    03. 
+
+    ==========================================================================
     ========================================================================== */
 
+
+
+
+/*  =============================================================================
+    01. Misc Mixins
+    ========================================================================== */
 
 // Creates an absolutely positioned pseudo block
 @mixin pseudo-block($width: 16px, $height: 16px) {
@@ -30,7 +47,6 @@
     }
 }
 
-
 // uses border instead of text-decoration for link style
 @mixin link-border-underline($defalt-state-color: $link-color, $hover-state-color: $link-hover-color) {
     color: $defalt-state-color;
@@ -46,8 +62,6 @@
     }
 }
 
-
-
 // Hides an element visually, but makes it still available for screenreaders
 @mixin hide-visually {
     border: 0;
@@ -60,21 +74,21 @@
     width: 1px;
 }
 
-
 @mixin prevent-webkit-gpu-flash {
     -webkit-transform: translateZ(0);
 }
 
-
 @mixin fix-font-weight {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 
 
+
 /*  =============================================================================
-    Media Queries
+    02. Media Queries
     ========================================================================== */
 
 @mixin only-grid-4 {
@@ -83,24 +97,35 @@
 
 @mixin from-grid-6 {
     @include at-breakpoint($from-grid-6) { @content; }
-    @if $support-for-ie8 { @content; }
+    @if $no-media-query-support { @content; }
 }
 
 @mixin from-grid-9 {
     @include at-breakpoint($from-grid-9) { @content; }
-    @if $support-for-ie8 { @content; }
+    @if $no-media-query-support { @content; }
 }
 
 @mixin from-grid-12 {
     @include at-breakpoint($from-grid-12) { @content; }
-    @if $support-for-ie8 { @content; }
+    @if $no-media-query-support { @content; }
 }
 
-@mixin from-grid-18 { @include at-breakpoint($from-grid-18) { @content; } }
-
+@mixin from-grid-18 {
+    @include at-breakpoint($from-grid-18) { @content; }
+}
 
 @mixin only-retina {
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
         @content;
     }
 }
+
+
+
+
+/*  =============================================================================
+    03. 
+    ========================================================================== */
+
+
+

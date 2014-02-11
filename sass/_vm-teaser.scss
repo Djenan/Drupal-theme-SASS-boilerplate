@@ -1,5 +1,28 @@
 /*  =============================================================================
-    Teaser Components
+    =============================================================================
+
+    Styles for VIEW MODE: "Teaser"
+
+    --
+
+    This file contains styles targeted just at the above Drupal view mode.
+
+    --
+
+    File contents:
+
+    01. "Teaser" Components
+    02. "Teaser" Default
+    03. "Teaser" Styles for XXXXX Content Type
+
+    ==========================================================================
+    ========================================================================== */
+
+
+
+
+/*  =============================================================================
+    01. "Teaser" Components
     ========================================================================== */
 
 .teaser-details {
@@ -10,44 +33,22 @@
 
 
 /*  =============================================================================
-    Default Teaser
+    02. "Teaser" Default
     ========================================================================== */
 
-.view-mode-teaser {
+.view-mode-full {
 
-    .teaser-thumbnail-container {
-
-    }
-
-    .teaser-title {
-
-    }
-
-    .teaser-details {
-
-    }
 }
 
 
 
 
 /*  =============================================================================
-    XXXX Content Type Teaser
+    03. "Teaser" Styles for XXXXX Content Type
     ========================================================================== */
 
-.view-mode-teaser.node-XXXXX {
+.view-mode-full.node-XXXXX {
 
-    .teaser-thumbnail-container {
-
-    }
-
-    .teaser-title {
-
-    }
-
-    .teaser-details {
-
-    }
 }
 
 
